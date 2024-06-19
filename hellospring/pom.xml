@@ -7,6 +7,12 @@
   <name>Hello Spring</name>
   <description>This is my 1st spring project</description>
   
+  <!-- property -->
+  <properties>
+  	<springframework.version>6.1.9</springframework.version>
+  </properties>
+  
+  
   <!-- Info about Project Build -->
   <build>
     <plugins>
@@ -26,6 +32,23 @@
   
   <!-- Dependencies Management -->
   <dependencies>
-  
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>${springframework.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>${springframework.version}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>${springframework.version}</version>
+	</dependency>
   </dependencies>
 </project>
