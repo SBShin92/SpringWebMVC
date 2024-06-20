@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>hello 페이지</title>
 </head>
 <body>
-<h1>${ message }</h1>
+<h1>Hello 페이지 입니다.</h1>
 
+<h2>${ message }</h2>
 
 </body>
 </html>
