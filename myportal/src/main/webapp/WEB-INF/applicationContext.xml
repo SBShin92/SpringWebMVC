@@ -49,6 +49,7 @@
     <!-- config파일은 classpath:mybatis/configuration.xml, 없으면 생성하자 -->
     <!-- oracle을 쓴다면 oracleDatasource, mySQL을 쓴다면? -->
     <!-- MyBatis SqlSessionFactoryBean -->
+    
     <!-- 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="oracleDatasource" />
@@ -57,6 +58,7 @@
      -->
     
     <!-- MyBatis SqlSessionTemplate -->
+    
     <!--
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"  />
