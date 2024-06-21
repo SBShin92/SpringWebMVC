@@ -21,13 +21,4 @@ public class MyportalController {
 	public String raiseExcept() {
 		throw new MainControllerException();
 	}
-	
-	@ExceptionHandler(MainControllerException.class)
-	public String exceptionHandler(MainControllerException e, Model model) {
-		
-		model.addAttribute("name", e.getClass().getSimpleName());
-		model.addAttribute("message", e.getMessage());
-		
-		return "errors/exception";
-	}
 }
