@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>방명록</title>
-    <link type="text/css" rel="stylesheet" href="css/guestbook.css" />
+    <link type="text/css" rel="stylesheet" href='<c:url value="/css/guestbook.css" />' />
   </head>
   <body>
     <div id="container">

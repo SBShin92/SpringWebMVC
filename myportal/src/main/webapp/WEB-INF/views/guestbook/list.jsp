@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -38,18 +38,14 @@
           </form>
           <br />
           
-          <c:forEach items="${ requestScope.guestbookList }" var="vo">
+          <c:forEach items="${ requestScope.guestbookList }" var="vo" varStatus="status">
             <table>
               <tr>
-                <td>${ vo.no }</td>
+                <td>[${ vo.no }] ${ status.count } 번 째 게시글</td>
                 <td>${ vo.name }</td>
                 <td>${ vo.regDate }</td>
                 <td>
-                  <form action="<c:url value='/guestbook' />" method="get">
-                    <input type="hidden" name="a" value="delete" />
-                    <input type="hidden" name="no" value="${ vo.no }" />
-                    <button type="submit">삭제</button>
-                  </form>
+                  <a href="<c:url value='/guestbook?a=delete&no=${ vo.no }' />">삭제</a>
                 </td>
               </tr>
               <tr>
