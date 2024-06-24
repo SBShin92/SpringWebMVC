@@ -20,15 +20,16 @@ public class GuestbookServiceImpl implements GuestbookService {
 	}
 
 	@Override
-	public boolean writeNessage(GuestbookVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean writeMessage(GuestbookVO vo) {
+		
+		int insertedCount = guestbookDAO.insert(vo);
+		
+		return insertedCount == 1;
 	}
 
 	@Override
-	public boolean deleteNessage(GuestbookVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteMessage(GuestbookVO vo) {
+		return guestbookDAO.delete(vo) == 1;
 	}
 
 	@Override

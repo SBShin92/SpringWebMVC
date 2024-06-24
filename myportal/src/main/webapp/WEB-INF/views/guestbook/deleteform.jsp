@@ -15,9 +15,8 @@ pageEncoding="UTF-8"%>
       <jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
       <div id="content">
         <div id="guestbook">
-          <form action="<c:url value='/guestbook' />" method="POST">
-            <input type="hidden" name="no" value="${ param.no }">
-            <input type="hidden" name="a" value="delete" />
+          <form action="<c:url value='/guestbook/delete' />" method="POST">
+            <input type="hidden" name="no" value="${ no }">
             <table>
               <tr>
                 <td>비밀번호</td>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import himedia.myportal.exception.GuestbookDAOException;
 import himedia.myportal.vo.GuestbookVO;
 
 @Repository(value = "guestbookDAO")
@@ -29,14 +30,26 @@ public class GuestbookDAOImpl implements GuestbookDAO{
 
 	@Override
 	public int insert(GuestbookVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int insertedCount = 0;
+		try {
+			insertedCount = sqlSession.insert("guestbook.insert", vo);			
+//		} catch (PersistenceException e) {
+		} catch (Exception e) {
+			System.err.println("INSERT 실패!!!!");
+			throw new GuestbookDAOException("Guestbook INSERT Error: ", vo);
+		}
+		return insertedCount;
 	}
 
 	@Override
 	public int delete(GuestbookVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deletedCount = 0;
+		try {
+			deletedCount = sqlSession.delete("guestbook.delete", vo);
+		} catch (Exception e) {
+			throw new GuestbookDAOException("Guestbook DELETE ERROR: ", vo);
+		}
+		return deletedCount;
 	}
 
 	@Override

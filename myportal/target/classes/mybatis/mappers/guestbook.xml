@@ -10,12 +10,32 @@
     ORDER BY regDate DESC
   </select>
   
-  <select id="select" resultType="GuestbookVO">
-    SELECT no, name, password, content, reg_date as regDate
-    FROM guestbook
-    ORDER BY regDate DESC
-    WHERE no = #{ no }
-  </select>
+  <!-- Oracle용 insert -->
+  <insert id="insert" parameterType="GuestbookVO">
+    <selectKey keyProperty="no" resultType="Long" order="BEFORE">
+      SELECT SEQ_GUESTBOOK_NO.nextval FROM dual
+    </selectKey>
+    INSERT INTO guestbook(no, name, password, content, reg_date)
+    VALUES(#{no}, #{name}, #{password}, #{content}, sysdate)
+  </insert>
   
+  
+  <!-- MySQL용 insert(Auto Increment) -->
+
+  <!-- 
+  <insert id="insert" parameterType="GuestbookVO">
+    INSERT INTO guestbook(name, password, content)
+    VALUES(#{ name }, #{ password }, #{ content })
+  </insert>
+  -->
+  
+  <delete id="delete" parameterType="GuestbookVO">
+  DELETE FROM guestbook
+  WHERE no = #{no} AND password = #{password}
+  </delete>
+  
+  
+  
+
 
 </mapper>

@@ -15,14 +15,13 @@
       <jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
       <div id="content">
         <div id="guestbook">
-          <form action="<c:url value='/guestbook' />" method="POST">
-            <input type="hidden" name="a" value="add" />
+          <form action="<c:url value='/guestbook/write' />" method="POST">
             <table>
               <tr>
                 <td>이름</td>
                 <td><input type="text" name="name" /></td>
                 <td>비밀번호</td>
-                <td><input type="password" name="pass" /></td>
+                <td><input type="password" name="password" /></td>
               </tr>
               <tr>
                 <td colspan="4">
@@ -45,7 +44,7 @@
                 <td>${ vo.name }</td>
                 <td>${ vo.regDate }</td>
                 <td>
-                  <a href="<c:url value='/guestbook?a=delete&no=${ vo.no }' />">삭제</a>
+                  <a href="<c:url value='/guestbook/delete/${ vo.no }' />">삭제</a>
                 </td>
               </tr>
               <tr>

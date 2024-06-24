@@ -55,9 +55,11 @@ public class GuestbookVO {
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
+
 	@Override
 	public String toString() {
-		return "GuestbookVO [no=" + no + ", name=" + name + ", content=" + content + ", regDate=" + regDate + "]";
+		return "GuestbookVO [no=" + no + ", name=" + name + ", password=" + password + ", content=" + content
+				+ ", regDate=" + regDate + "]";
 	}
 	
 }

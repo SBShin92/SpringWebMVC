@@ -7,7 +7,7 @@ import himedia.myportal.vo.GuestbookVO;
 public interface GuestbookService {
 	public List<GuestbookVO> getMessageList();
 
-	public boolean writeNessage(GuestbookVO vo);
-	public boolean deleteNessage(GuestbookVO vo);
+	public boolean writeMessage(GuestbookVO vo);
+	public boolean deleteMessage(GuestbookVO vo);
 	public boolean updateMessage(GuestbookVO vo);
 }
