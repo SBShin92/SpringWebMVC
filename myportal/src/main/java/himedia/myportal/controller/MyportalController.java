@@ -18,7 +18,7 @@ public class MyportalController {
 	}
 	
 	@GetMapping("/except")
-	public String raiseExcept() {
+	public String raiseExcept() throws MainControllerException {
 		throw new MainControllerException();
 	}
 }
