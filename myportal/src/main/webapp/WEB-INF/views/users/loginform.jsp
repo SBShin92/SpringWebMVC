@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>My Home: Login</title>
-    <link rel="stylesheet" href="css/users.css" />
+    <link rel="stylesheet" href='<c:url value="/css/users.css" />' />
   </head>
   <body>
     <div id="container">
