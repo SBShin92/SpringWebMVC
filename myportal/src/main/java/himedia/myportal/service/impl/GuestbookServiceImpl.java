@@ -1,4 +1,4 @@
-package himedia.myportal.service;
+package himedia.myportal.service.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import himedia.myportal.dao.GuestbookDAO;
+import himedia.myportal.service.GuestbookService;
 import himedia.myportal.vo.GuestbookVO;
 
 @Service("guestbookService")

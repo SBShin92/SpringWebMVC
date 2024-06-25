@@ -1,4 +1,4 @@
-package himedia.myportal.dao;
+package himedia.myportal.dao.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import himedia.myportal.dao.GuestbookDAO;
 import himedia.myportal.exception.GuestbookDAOException;
 import himedia.myportal.vo.GuestbookVO;
 

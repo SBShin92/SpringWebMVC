@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ page session="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>My Home: Join Form</title>
-    <link rel="stylesheet" href="css/users.css" />
+    <link rel="stylesheet"href='<c:url value="/css/users.css" />' />
   </head>
   <body>
     <div id="container">

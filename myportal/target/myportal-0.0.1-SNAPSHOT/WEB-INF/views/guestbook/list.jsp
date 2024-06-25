@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>방명록</title>
-    <link type="text/css" rel="stylesheet" href="css/guestbook.css" />
+    <link type="text/css" rel="stylesheet" href='<c:url value="/css/guestbook.css" />' />
   </head>
 
   <body>
@@ -15,14 +15,13 @@
       <jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
       <div id="content">
         <div id="guestbook">
-          <form action="<c:url value='/guestbook' />" method="POST">
-            <input type="hidden" name="a" value="add" />
+          <form action="<c:url value='/guestbook/write' />" method="POST">
             <table>
               <tr>
                 <td>이름</td>
                 <td><input type="text" name="name" /></td>
                 <td>비밀번호</td>
-                <td><input type="password" name="pass" /></td>
+                <td><input type="password" name="password" /></td>
               </tr>
               <tr>
                 <td colspan="4">
@@ -38,18 +37,14 @@
           </form>
           <br />
           
-          <c:forEach items="${ requestScope.guestbookList }" var="vo">
+          <c:forEach items="${ requestScope.guestbookList }" var="vo" varStatus="status">
             <table>
               <tr>
-                <td>${ vo.no }</td>
+                <td>[${ vo.no }] ${ status.count } 번 째 게시글</td>
                 <td>${ vo.name }</td>
                 <td>${ vo.regDate }</td>
                 <td>
-                  <form action="<c:url value='/guestbook' />" method="get">
-                    <input type="hidden" name="a" value="delete" />
-                    <input type="hidden" name="no" value="${ vo.no }" />
-                    <button type="submit">삭제</button>
-                  </form>
+                  <a href="<c:url value='/guestbook/delete/${ vo.no }' />">삭제</a>
                 </td>
               </tr>
               <tr>

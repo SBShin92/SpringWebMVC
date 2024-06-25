@@ -11,6 +11,7 @@
   </select>
   
   <!-- Oracle용 insert -->
+  <!-- 
   <insert id="insert" parameterType="GuestbookVO">
     <selectKey keyProperty="no" resultType="Long" order="BEFORE">
       SELECT SEQ_GUESTBOOK_NO.nextval FROM dual
@@ -18,16 +19,14 @@
     INSERT INTO guestbook(no, name, password, content, reg_date)
     VALUES(#{no}, #{name}, #{password}, #{content}, sysdate)
   </insert>
-  
+   -->
   
   <!-- MySQL용 insert(Auto Increment) -->
-
-  <!-- 
+ 
   <insert id="insert" parameterType="GuestbookVO">
-    INSERT INTO guestbook(name, password, content)
-    VALUES(#{ name }, #{ password }, #{ content })
+    INSERT INTO guestbook(name, password, content, reg_date)
+    VALUES(#{ name }, #{ password }, #{ content }, now())
   </insert>
-  -->
   
   <delete id="delete" parameterType="GuestbookVO">
   DELETE FROM guestbook

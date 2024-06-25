@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>방명록</title>
-    <link type="text/css" rel="stylesheet" href="css/guestbook.css" />
+    <link type="text/css" rel="stylesheet" href='<c:url value="/css/guestbook.css" />' />
   </head>
   <body>
     <div id="container">
@@ -15,9 +15,8 @@ pageEncoding="UTF-8"%>
       <jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include>
       <div id="content">
         <div id="guestbook">
-          <form action="<c:url value='/guestbook' />" method="POST">
-            <input type="hidden" name="no" value="${ param.no }">
-            <input type="hidden" name="a" value="delete" />
+          <form action="<c:url value='/guestbook/delete' />" method="POST">
+            <input type="hidden" name="no" value="${ no }">
             <table>
               <tr>
                 <td>비밀번호</td>

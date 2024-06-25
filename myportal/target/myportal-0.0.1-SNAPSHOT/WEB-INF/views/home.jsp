@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page session="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>sashin92's Page</title>
-<link type="text/css" rel="stylesheet" href="css/home.css" />
+<link type="text/css" rel="stylesheet" href='<c:url value="/css/home.css" />' />
 </head>
 <body>
   <div id="container">

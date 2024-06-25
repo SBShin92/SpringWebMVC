@@ -6,6 +6,8 @@
 <mapper namespace="users">
 
   <!-- 가입 -->
+  <!-- Oracle -->
+  <!-- 
   <insert id="insert" parameterType="UserVO">
   
     <selectKey keyProperty="no" resultType="Long" order="BEFORE">
@@ -13,6 +15,13 @@
     </selectKey>
     INSERT INTO users(no, name, password, email, gender)
     VALUES(#{no}, #{name}, #{password}, #{email}, #{gender})
+  </insert>
+   -->
+  <!-- MySQL -->
+  <insert id="insert" parameterType="UserVO">
+  
+    INSERT INTO users(name, password, email, gender)
+    VALUES(#{name}, #{password}, #{email}, #{gender})
   </insert>
 
   <!-- email 중복 확인을 위한 쿼리 -->

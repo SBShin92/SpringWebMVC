@@ -20,8 +20,7 @@ pageEncoding="UTF-8"%>
         <c:if test="${ not empty requestScope.errorMsg }">
           <p style="color:red; fonte-weight:bold;">${ requestScope.errorMsg }</p>
         </c:if>
-        <form method="POST" action="<c:url value='/users' />">
-          <input type="hidden" name="a" value="join" />
+        <form method="POST" action="<c:url value='/users/join' />">
           <label for="name">이름</label> <input type="text" name="name" /><br />
           <label for="password">암호</label>
           <input type="password" name="password" /><br />
