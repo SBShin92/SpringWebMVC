@@ -2,7 +2,6 @@ package himedia.myportal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,17 +33,13 @@ public class UsersController {
 	
 	@PostMapping("/join")
 	public String join(@ModelAttribute UserVO userVO, RedirectAttributes redirectAttributes) {
-		System.out.println("회원가입 폼: " + userVO);
-		
 		try {
-			if (userVO.getName() == null || userVO.getEmail() == null)
+			if ("".equals(userVO.getName()) || "".equals(userVO.getEmail()))
 				throw new UserDAOException();
 			userService.signUp(userVO);
-			System.out.println("회원가입 성공");
 			return "redirect:/users/joinsuccess";
 		} catch (UserDAOException e){
-			redirectAttributes.addFlashAttribute("errorMsg", "양식이 올바르지 않습니다.");
-			System.err.println("회원가입 실패");
+			redirectAttributes.addFlashAttribute("errorMsg", "양식이 올바르지 않거나 이미 존재합니다.");
 			return "redirect:/users/join";
 		}
 	}
