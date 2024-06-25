@@ -33,8 +33,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserVO selectUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		UserVO userVO = sqlSession.selectOne("users.selectUserByEmail", email);
+		return userVO;
 	}
 
 	@Override
