@@ -41,9 +41,13 @@
     </init-param>
   </filter>
   
-   <error-page>
-     <error-code>404</error-code>
-     <location>/views/errors/error.404.jsp</location>
-   </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/views/errors/error.404.jsp</location>
+  </error-page>
+  
+  <session-config>
+    <tracking-mode>COOKIE</tracking-mode>
+  </session-config>
   
 </web-app>
