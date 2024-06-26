@@ -4,14 +4,18 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
-    <typeAlias type="himedia.myportal.vo.GuestbookVO" alias="GuestbookVO" />
-    <typeAlias type="himedia.myportal.vo.UserVO" alias="UserVO" />
-    
+    <typeAlias type="himedia.myportal.vo.GuestbookVO"
+      alias="GuestbookVO" />
+    <typeAlias type="himedia.myportal.vo.UserVO"
+      alias="UserVO" />
+    <typeAlias type="himedia.myportal.vo.BoardVO"
+      alias="BoardVO" />
   </typeAliases>
+  
   <mappers>
-    <mapper resource="/mybatis/mappers/guestbook.xml"/>
-    <mapper resource="/mybatis/mappers/users.xml"/>
+    <mapper resource="/mybatis/mappers/guestbook.xml" />
+    <mapper resource="/mybatis/mappers/users.xml" />
+    <mapper resource="/mybatis/mappers/board.xml" />
   </mappers>
-  
-  
+
 </configuration>

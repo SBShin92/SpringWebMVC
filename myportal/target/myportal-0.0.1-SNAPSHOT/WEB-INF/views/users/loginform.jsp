@@ -21,8 +21,7 @@ pageEncoding="UTF-8"%>
         <c:if test="${ not empty requestScope.errorMsg }">
           <p style="color:red; fonte-weight:bold;">${ requestScope.errorMsg }</p>
         </c:if>
-        <form method="POST" action="<c:url value='/users'/>">
-          <input type="hidden" name="a" value="login" />
+        <form method="POST" action="<c:url value='/users/login'/>">
           <label for="email">이메일</label>
           <input type="text" name="email" /><br />
           <label for="password">Password</label>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import himedia.myportal.service.BoardService;
 import himedia.myportal.vo.BoardVO;
@@ -26,6 +27,7 @@ public class BoardController {
 	}
 	
 	
+	// 게시글 리스트
 	@GetMapping({"", "/", "/list"})
 	public String list(Model model) {
 		
@@ -35,43 +37,97 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	// 글 내용
 	@GetMapping("/view/{no}")
 	public String view(@PathVariable("no") Integer no, 
 			Model model,
-			HttpSession session) {
+			HttpSession session,
+			RedirectAttributes redirectAttributes) {
 		
-		if (session.getAttribute("authUser") == null)
-			return "redirect:/";
+		if (session.getAttribute("authUser") == null) {
+			
+			redirectAttributes.addFlashAttribute("errorMsg", "로그인 후 접근 가능합니다.");
+			return "redirect:/board";
+		}
 		
+		boardService.increasementHitCount(no);
 		model.addAttribute("selectedBoard", boardService.getContent(no));
 		return "board/view";
 	}
 	
-	@GetMapping("/modify/{no}")
-	public String modify(@PathVariable("no") Integer no, Model model) {
-		
-		// TODO
-		
-		return "board/modify";
-	}
-	
+	// 글 작성
 	@GetMapping("/write")
-	public String write(Model model, HttpSession session) {
-		if (session.getAttribute("authUser") == null)
-			return "redirect:/";
+	public String write(Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+		if (session.getAttribute("authUser") == null) {
+			redirectAttributes.addFlashAttribute("errorMsg", "로그인 후 작성 가능합니다.");
+			return "redirect:/board";
+		}
 		return "board/write";
 	}	
 	
 	@PostMapping("/write")
-	public String write(@ModelAttribute BoardVO boardVO, HttpSession session) {
+	public String write(@ModelAttribute BoardVO boardVO, 
+			HttpSession session,
+			RedirectAttributes redirectAttributes) {
 		UserVO authUser = (UserVO)session.getAttribute("authUser");
-		if (authUser == null)
-			return "redirect:/";
+		if (authUser == null) {			
+			redirectAttributes.addFlashAttribute("errorMsg", "로그인 후 작성 가능합니다.");
+			return "redirect:/board";
+		}
 		
 		boardVO.setUserNo(authUser.getNo().intValue());
 		
 		boardService.write(boardVO);
 		return "redirect:/board/list";
 	}
+	
+	// 글 수정
+	@GetMapping("/modify/{no}")
+	public String modify(@PathVariable("no") Integer no, 
+			Model model, 
+			HttpSession session,
+			RedirectAttributes redirectAttributes) {
+		UserVO authUser = (UserVO)session.getAttribute("authUser");
+		BoardVO boardVO = boardService.getContent(no);
+		
+		// TODO 작성자가 다를 때 처리
+		if (authUser == null || boardVO.getUserNo() != authUser.getNo().intValue()) {
+			redirectAttributes.addFlashAttribute("errorMsg", "작성자 본인만 수정 가능합니다.");
+			return "redirect:/board/view/" + no;
+		}
+		model.addAttribute("boardVO", boardVO);
+		return "board/modify";
+	}
+	
+	@PostMapping("/modify")
+	public String modify(@ModelAttribute BoardVO boardVO, 
+			HttpSession session,
+			RedirectAttributes redirectAttributes) {
+		UserVO authUser = (UserVO)session.getAttribute("authUser");
+		if (authUser == null) {
+			redirectAttributes.addFlashAttribute("errorMsg", "잘못된 접근입니다.");
+			return "redirect:/board";
+		}
+		
+		boardService.update(boardVO);
+		return "redirect:/board/view/" + boardVO.getNo();
+	}
 
+	@GetMapping("/delete/{no}")
+	public String delete(@PathVariable("no") Integer no, 
+			HttpSession session,
+			RedirectAttributes redirectAttributes) {
+		UserVO authUser = (UserVO)session.getAttribute("authUser");
+		BoardVO boardVO = boardService.getContent(no);
+		
+		if (authUser == null || boardVO.getUserNo() != authUser.getNo().intValue()) {
+			redirectAttributes.addFlashAttribute("errorMsg", "작성자 본인만 삭제 가능합니다.");
+			return "redirect:/board";
+		}
+		
+		boardService.delete(no, authUser.getNo().intValue());
+		
+		return "redirect:/board";
+	}
+	
 }

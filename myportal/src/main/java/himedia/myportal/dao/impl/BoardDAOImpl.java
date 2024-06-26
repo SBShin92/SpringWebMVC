@@ -1,6 +1,8 @@
 package himedia.myportal.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +38,21 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int update(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("board.update", boardVO);
 	}
 	
 	@Override
 	public int increaseHitCount(Integer no) {
-		return sqlSession.update("increaseHitCount", no);
+		return sqlSession.update("board.increaseHitCount", no);
 	}
+
+	@Override
+	public int delete(Integer no, Integer userNo) {
+		Map<String, Integer> params = new HashMap<>();
+	    params.put("no", no);
+	    params.put("userNo", userNo);
+	    return sqlSession.delete("board.delete", params);	}
+	
 	
 	
 }

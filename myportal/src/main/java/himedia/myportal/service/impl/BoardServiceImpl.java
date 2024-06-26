@@ -27,7 +27,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getContent(Integer no) {
-		boardDAO.increaseHitCount(no);
 		return boardDAO.getContent(no);
 	}
 
@@ -38,9 +37,19 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean update(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return false;
+		return 1 == boardDAO.update(boardVO);
 	}
 
+	@Override
+	public boolean delete(Integer no, Integer userNo) {
+		return 1 == boardDAO.delete(no, userNo);
+	}
+
+	@Override
+	public void increasementHitCount(Integer no) {
+		boardDAO.increaseHitCount(no);		
+	}
+
+	
 	
 }

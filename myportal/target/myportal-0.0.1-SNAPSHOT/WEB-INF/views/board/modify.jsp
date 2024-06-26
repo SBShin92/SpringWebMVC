@@ -17,7 +17,8 @@
 
     <div id="wrapper">
       <div id="board" class="board-form">
-        <form method="post" action="">
+        <form method="post" action="<c:url value="/board/modify" />">
+          <input type="hidden" name="no" value="${ boardVO.no }" />
           <table border="1" width="640" class="tbl-ex">
             <tr>
               <td colspan="2"><h3>게시판</h3></td>
@@ -27,11 +28,11 @@
             </tr>
             <tr>
               <td>제목</td>
-              <td><input type="text" name="title" value=""></td>
+              <td><input type="text" name="title" value="${ boardVO.title }"></td>
             </tr>
             <tr>
               <td>내용</td>
-              <td><textarea id="content" name="content">수정해야 할 글 내용</textarea>
+              <td><textarea id="content" name="content">${ boardVO.content }</textarea>
               </td>
             </tr>
             <tr>

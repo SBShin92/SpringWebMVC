@@ -10,4 +10,6 @@ public interface BoardDAO {
 	public int insert(BoardVO boardVO);
 	public int update(BoardVO boardVO);
 	public int increaseHitCount(Integer no);
+	
+	public int delete(Integer no, Integer userNo);
 }
