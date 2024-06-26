@@ -105,7 +105,7 @@ a#new-book	 {
 	border:1px solid #555; 
 	font-weight:bold; 
 	background-color:#E8ECF6; 
-	color:#111 
+	color:#111;
 }
 
 .board-form .bottom a,
@@ -116,19 +116,19 @@ a#new-book	 {
 	font-weight:bold; 
 	background-color:#E8ECF6; 
 	color:#111;
-	cursor: pointer	
+	cursor: pointer;
 }
 
 .board-form .bottom a {
 	margin-left: 10px;
-	padding:10px 20px 11px 20px 
+	padding:10px 20px 11px 20px;
 }
 
 a.del	{
 	display:block;
 	width:20px;
 	height:20px; 
-	background:url("/mysite/assets/images/recycle.png") no-repeat 0 0;
+	background:url("/myportal/assets/images/trash.png") no-repeat 0 0;
 	font-size:0;
 }
 

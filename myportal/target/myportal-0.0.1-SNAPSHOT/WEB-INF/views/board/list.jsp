@@ -9,6 +9,7 @@
 <title>sashin92's Page</title>
 <link type="text/css" rel="stylesheet"
   href='<c:url value="/css/board.css" />' />
+  <script src="<c:url value = '/javascript/board.js' />"></script>
 </head>
 <body>
   <div id="container">
@@ -35,17 +36,17 @@
             
             <tr>
               <td>${ vo.no }</td>
-              <td><a href="<c:url value="/board/view" />/${ vo.no }">${ vo.title }</a></td>
+              <td><a href="<c:url value='/board/view' />/${ vo.no }">${ vo.title }</a></td>
               <td>${ vo.userName }</td>
               <td>${ vo.hit }</td>
               <td>${ vo.regDate }</td>
-              <td><a href="<c:url value="/board/delete" />/${ vo.no }">삭제</a></td>
+              <td><a href="<c:url value='/board/delete' />/${ vo.no }" class="del-button">삭제</a></td>
             </tr>
           
           </c:forEach>
           
           <tr>
-            <td colspan="6"><a href="<c:url value="/board/write" />">글쓰기</a></td>
+            <td colspan="6"><a href="<c:url value='/board/write' />">글쓰기</a></td>
           </tr>
         </table>
       </div>
