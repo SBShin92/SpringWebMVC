@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "mysite.css";
 
-#board { margin:20px auto;	width:550px; }
+#board { margin:20px auto;	width:550px; margin-left: 130px; }
 
 
 #search_form {
@@ -42,7 +42,7 @@ input#kwd	{
 .tbl-ex th, 
 .tbl-ex td	{ 
 	padding:8px;
-	text-align:center; 	 
+	text-align:center;
 }
 	
 .tbl-ex th	{ 
@@ -130,6 +130,11 @@ a.del	{
 	height:20px; 
 	background:url("/mysite/assets/images/recycle.png") no-repeat 0 0;
 	font-size:0;
+}
+
+.tbl-ex td div {
+	word-wrap: break-word;
+    word-break: break-all;
 }
 
 

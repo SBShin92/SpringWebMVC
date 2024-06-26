@@ -18,7 +18,7 @@
     <div id="wrapper">
       <div id="board" class="board-form">
         <form method="post" action="">
-          <table border="1" width="640">
+          <table border="1" width="640" class="tbl-ex">
             <tr>
               <td colspan="2"><h3>게시판</h3></td>
             </tr>
@@ -35,7 +35,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2"><a href="">취소</a> <input
+              <td colspan="2"><a href="<c:url value="/board" />">취소</a> <input
                 type="submit" value="수정"></td>
             </tr>
           </table>

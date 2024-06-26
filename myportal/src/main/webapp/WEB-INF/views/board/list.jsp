@@ -39,13 +39,13 @@
               <td>${ vo.userName }</td>
               <td>${ vo.hit }</td>
               <td>${ vo.regDate }</td>
-              <td><a href="">삭제</a></td>
+              <td><a href="<c:url value="/board/delete" />">삭제</a></td>
             </tr>
           
           </c:forEach>
           
           <tr>
-            <td colspan="6"><a href="">글쓰기</a></td>
+            <td colspan="6"><a href="<c:url value="/board/write" />">글쓰기</a></td>
           </tr>
         </table>
       </div>

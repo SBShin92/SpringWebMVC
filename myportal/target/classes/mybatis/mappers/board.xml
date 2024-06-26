@@ -5,8 +5,8 @@
 <mapper namespace="board">
 
   <insert id="insert" parameterType="BoardVO">
-    INSERT INTO board(title, content, hit, user_no)
-    VALUES(#{title}, #{content}, #{hit}, #{user_no})
+    INSERT INTO board(title, content, user_no)
+    VALUES(#{title}, #{content}, #{userNo})
   </insert>
   
   <select id="selectAll" resultType="BoardVO">
