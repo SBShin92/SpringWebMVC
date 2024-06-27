@@ -8,7 +8,7 @@
     font-family: Arial, sans-serif;
     color: #333;
 }
-#guestbook form,
+#guestbook form table,
 #guestbook table {
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,9 @@
 }
 
 #guestbook table,
-#guestbook table td {
+#guestbook table td,
+#guestbook form table,
+#guestbook form table td  {
     border: 1px solid #ddd;
     padding: 10px;
 }
@@ -92,7 +94,7 @@
 }
 
 input[type="text"], input[type="password"] {
-    width: 120px;
+    width: 90%;
 }
 
 #guestbook table td {
