@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration의 debug속성을 true로 하면 logback 구동 시의 상태를 볼 수 있다. -->
+<configuration
+  xmlns="http://ch.qos.logback/xml/ns/logback"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+
+  <appender name="consoleAppender"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="fileAppender"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>\log-myportal\myportal.log</file>
+    <encoder>
+      <charset>UTF-8</charset>
+      <pattern>
+        %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+      </pattern>
+    </encoder>
+    <!-- 
+    <rollingPolicy
+      class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>\log-myportal\logFile.%i.log</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>10</maxIndex>
+    </rollingPolicy>
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>2KB</maxFileSize>
+    </triggeringPolicy>
+     -->
+    
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+		<fileNamePattern>\log-myportal\myportal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+		<maxHistory>30</maxHistory>
+        <maxFileSize>10MB</maxFileSize>
+    </rollingPolicy>
+    
+  </appender>
+
+  <logger name="himedia.myportal" level="DEBUG">
+    <appender-ref ref="consoleAppender" />
+  </logger>
+
+
+  <root level="TRACE">
+    <appender-ref ref="fileAppender" />
+  </root>
+
+
+</configuration>
