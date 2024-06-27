@@ -2,7 +2,6 @@ C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\j
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\exception\ApplicationExceptionHandler.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\service\impl\UserServiceImpl.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\dao\impl\BoardDAOImpl.java
-C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\controller\MyportalController.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\controller\UsersController.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\dao\BoardDAO.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\dao\impl\UserDAOImpl.java
@@ -17,6 +16,7 @@ C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\j
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\exception\MainControllerException.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\service\impl\GuestbookServiceImpl.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\exception\BoardDAOException.java
+C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\controller\MainController.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\dao\UserDAO.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\service\UserService.java
 C:\Users\하이미디어학원\Documents\himedi\SpringWebMVC\myportal\src\main\java\himedia\myportal\controller\GuestbookController.java

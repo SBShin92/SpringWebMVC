@@ -16,7 +16,7 @@
     <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
 
-    <div id="wrapper">
+    <div id="content">
       <div id="board"  class="board-form">
 
         <table border="1" width="640" class="tbl-ex">

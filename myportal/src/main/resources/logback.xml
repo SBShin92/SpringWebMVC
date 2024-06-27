@@ -17,7 +17,7 @@
 
   <appender name="fileAppender"
     class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>\log-myportal\myportal.log</file>
+    <file>/var/lib/tomcat/logs/myportal/myportal.log</file>
     <encoder>
       <charset>UTF-8</charset>
       <pattern>
@@ -38,7 +38,7 @@
      -->
     
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-		<fileNamePattern>\log-myportal\myportal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+		<fileNamePattern>/var/lib/tomcat/logs/myportal/myportal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 		<maxHistory>30</maxHistory>
         <maxFileSize>10MB</maxFileSize>
     </rollingPolicy>

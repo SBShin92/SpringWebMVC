@@ -16,7 +16,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String myportal() {
-		logger.info("this is main page");
+		logger.debug("visited something.... who?");
 		
 		return "home";
 	}

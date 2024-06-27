@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "mysite.css";
 
-#board { margin:20px auto;	width:550px; margin-left: 130px; }
+#board { margin:20px auto;	width:90%; }
 
 
 #search_form {

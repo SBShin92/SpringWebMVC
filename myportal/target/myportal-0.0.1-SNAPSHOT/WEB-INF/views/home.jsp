@@ -20,7 +20,7 @@
 
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
 
-    <div id="wrapper">
+    <div id="content">
       <div id="site-introduction">
         <!-- content 영역 -->
         <h2>

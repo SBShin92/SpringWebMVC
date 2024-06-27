@@ -13,7 +13,7 @@
   <div id="container">
     <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
-    <div id="wrapper">
+    <div id="content">
       <div id="site-introduction">
 
         <h1>OOPS!</h1>

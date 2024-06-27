@@ -15,7 +15,7 @@
     <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
 
-    <div id="wrapper">
+    <div id="content">
       <div id="board" class="board-form">
         <form method="post" action="<c:url value="/board/modify" />">
           <input type="hidden" name="no" value="${ boardVO.no }" />
