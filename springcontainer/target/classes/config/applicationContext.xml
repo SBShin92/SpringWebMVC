@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- Your bean definitions here -->
+    <bean id="user" class="himedia.springcontainer.User">
+      <constructor-arg value="커피빈즈" />
+    </bean>
+    
+    <bean id="user3" class="himedia.springcontainer.User">
+      <constructor-arg value="까페베네" />
+    </bean>
+    
+    <bean id="user4" class="himedia.springcontainer.User">
+      <constructor-arg type="Integer" index="0" value="4" />
+      <constructor-arg type="String" index="1" value="할리스" />
+    </bean>
+    
+    <bean id="user5" class="himedia.springcontainer.User">
+      <property name="no" value="5" />
+      <property name="name" value="이디야" />
+    </bean>
+    
+    <bean id="friend6" class="himedia.springcontainer.Friend">
+      <property name="name" value="벅스" />
+    </bean>
+    
+    <bean id="user6" class="himedia.springcontainer.User">
+      <property name="no" value="6" />
+      <property name="name" value="스타" />
+      <property name="friend" ref="friend6" />
+    </bean>
+    
+    
+    <!--
+    <bean id="user6" class="himedia.springcontainer.User">
+      <property name="no" value="6" />
+      <property name="name" value="스타" />
+      <property name="friend">
+        <bean id="friend6" class="himedia.springcontainer.Friend">
+          <property name="name" value="벅스" />
+        </bean>
+      </property>
+    </bean>
+    -->
+    
+    <bean id="user7" class="himedia.springcontainer.User">
+      <constructor-arg type="Integer" index="0" value="7" />
+      <constructor-arg type="String" index="1" value="폴바셋" />
+      <property name="friends">
+        <list>
+          <value>김씨</value>
+          <value>최씨</value>
+          <value>형씨</value>
+        </list>
+      </property>
+      <property name="hobbies">
+        <set>
+          <value>아.아.</value>
+          <value>아.샷.추.</value>
+          <value>핫초코</value>
+        </set>
+      </property>
+      <property name="address">
+        <map>
+          <entry key="country" value="대한민국" />
+          <entry key="city" value="서울" />
+          <entry key="villege" value="강남" />
+        </map>
+      </property>
+    </bean>
+    
+</beans>
