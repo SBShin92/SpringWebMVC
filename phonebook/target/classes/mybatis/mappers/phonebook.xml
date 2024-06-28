@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="phonebook">
+  <select id="selectAll" resultType="PhonebookVO">
+    SELECT id, name, hp, tel
+    FROM phonebook
+    ORDER BY id
+  </select>
+  
+  <select id="selectListByKeyword" parameterType="String" resultType="PhonebookVO">
+    SELECT id, name, hp, tel
+    FROM phonebook
+    WHERE name LIKE concat('%', #{keyword}, '%');
+  </select>
+  
+  
+  <select id="selectOne" parameterType="Integer" resultType="PhonebookVO">
+    SELECT id, name, hp, tel
+    FROM phonebook
+    WHERE id = #{ val }
+  </select>
+  
+  
+  
+  
+  <insert id="insert" parameterType="PhonebookVO">
+    INSERT INTO phonebook(name, hp, tel)
+    VALUES(#{ name }, #{ hp }, #{ tel })
+  </insert>
+  
+  <delete id="delete" parameterType="PhonebookVO">
+  DELETE FROM phonebook
+  WHERE id = #{id}
+  </delete>
+  
+  
+
+</mapper>
