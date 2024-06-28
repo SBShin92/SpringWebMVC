@@ -1,15 +1,13 @@
 package himedia.myportal.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import himedia.myportal.dao.UserDAO;
 import himedia.myportal.service.UserService;
 import himedia.myportal.vo.UserVO;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -39,5 +37,15 @@ public class UserServiceImpl implements UserService {
 		UserVO userVO = userDAO.selectUser(email, password);
 		
 		return userVO;
+	}
+
+	@Override
+	public boolean isAuthenticated(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			UserVO authUser = (UserVO)session.getAttribute("authUser");
+			return authUser != null;
+		}
+		return false;
 	}
 }
