@@ -6,19 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import himedia.myportal.dao.BoardDAO;
+import himedia.myportal.dao.BoardFilesBridgeDAO;
+import himedia.myportal.dao.FilesDAO;
 import himedia.myportal.service.BoardService;
+import himedia.myportal.vo.BoardFilesBridgeVO;
 import himedia.myportal.vo.BoardVO;
+import himedia.myportal.vo.FileVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	
-	private BoardDAO boardDAO;
-	
 	@Autowired
-	public BoardServiceImpl(BoardDAO boardDAO) {
-		this.boardDAO = boardDAO;
-	}
-		
+	private BoardDAO boardDAO;
+	@Autowired
+	private BoardFilesBridgeDAO boardFilesBridgeDAO;
+	@Autowired
+	private FilesDAO filesDAO;
+	
 	@Override
 	public List<BoardVO> getList() {
 		return boardDAO.selectAll();
@@ -50,6 +54,16 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.increaseHitCount(no);		
 	}
 
+	@Override
+	public FileVO getFileRelatedByBoard(Integer boardNo) {
+		BoardFilesBridgeVO getBFBVO = boardFilesBridgeDAO.selectOneByBoardNo(boardNo);
+		if (getBFBVO != null)
+			return filesDAO.selectOne(getBFBVO.getFileNo());
+		else
+			return null;
+	}
+
+	
 	
 	
 }

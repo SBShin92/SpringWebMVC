@@ -12,11 +12,7 @@
 </head>
 <body>
   <div id="container">
-    <c:import url="/WEB-INF/views/includes/header.jsp">
-      <c:param name="param1" value="value1" />
-      <c:param name="param2" value="value2" />
-    </c:import>
-
+    <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
 
     <div id="content">
@@ -28,10 +24,10 @@
         method="post"
         enctype="multipart/form-data">
         <label for="file">File</label>
-        <input type="file" name="file1" /><br/><br/>
-        <input type="text" name="text1" id="" /><br/><br/>
+        <input type="file" name="file1" />
         <input type="submit" value="제출" />
       </form>
+      <a href="<c:url value='/fileupload/result' />">목록</a>
     </div>
   <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
   </div>

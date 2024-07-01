@@ -10,12 +10,19 @@
       alias="UserVO" />
     <typeAlias type="himedia.myportal.vo.BoardVO"
       alias="BoardVO" />
+    <typeAlias type="himedia.myportal.vo.FileVO"
+      alias="FileVO" />
+    <typeAlias type="himedia.myportal.vo.BoardFilesBridgeVO"
+      alias="BoardFilesBridgeVO" />
+      
   </typeAliases>
   
   <mappers>
     <mapper resource="/mybatis/mappers/guestbook.xml" />
     <mapper resource="/mybatis/mappers/users.xml" />
     <mapper resource="/mybatis/mappers/board.xml" />
+    <mapper resource="/mybatis/mappers/files.xml" />
+    <mapper resource="/mybatis/mappers/boardFilesBridge.xml" />
   </mappers>
 
 </configuration>

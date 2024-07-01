@@ -31,6 +31,14 @@
             <td>${ selectedBoard.title }</td>
           </tr>
           <tr>
+            <td>첨부된 파일</td>
+            <td>
+              <div class="upload-image">
+                <img alt="첨부파일" src="<c:url value='/upload/${ boardFile.name }' />" />
+              </div>
+            </td>
+          </tr>
+          <tr>
             <td>내용</td>
             <td>
               <div>${ selectedBoard.content }</div>

@@ -27,6 +27,9 @@ input#kwd	{
 	width:250px;
 }
 
+img {
+  width: 300px;
+}
 
 .board-form {
 	margin-top:30px

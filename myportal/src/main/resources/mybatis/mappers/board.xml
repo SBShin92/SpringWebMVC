@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
 
-  <insert id="insert" parameterType="BoardVO">
+  <insert id="insert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="no">
     INSERT INTO board(title, content, user_no)
     VALUES(#{title}, #{content}, #{userNo})
   </insert>
@@ -31,6 +31,10 @@
         u.name as userName
     FROM board b, users u
     WHERE b.user_no = u.no AND b.no = #{val}
+  </select>
+  
+  <select id="getLastNo" resultType="Integer">
+    SELECT
   </select>
   
   <update id="increaseHitCount" parameterType="Integer">

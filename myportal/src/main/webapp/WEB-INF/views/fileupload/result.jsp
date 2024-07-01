@@ -12,19 +12,17 @@
 </head>
 <body>
   <div id="container">
-    <c:import url="/WEB-INF/views/includes/header.jsp">
-      <c:param name="param1" value="value1" />
-      <c:param name="param2" value="value2" />
-    </c:import>
-
+    <jsp:include page="/WEB-INF/views/includes/header.jsp" />
     <jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
 
     <div id="content">
-
       <h1>파일들</h1>
 
-      
+      <img alt="uploaded file" src="<c:url value='/upload/${ imageFileName }' />" />
+      <br/>
 
+      <a href="<c:url value='/fileupload/form' />">업로드 양식</a>
+    
     </div>
   <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
   </div>

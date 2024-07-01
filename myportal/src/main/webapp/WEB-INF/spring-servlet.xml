@@ -67,5 +67,10 @@
       <property name="order" value="1"/>
     </bean>
     
+    <bean id="multipartResolver" 
+        class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+    <mvc:resources location="file:c:/uploaded-file/" mapping="/upload/**" />
+    
+    
     
 </beans>

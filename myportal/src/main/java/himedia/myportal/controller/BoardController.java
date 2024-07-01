@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import himedia.myportal.service.BoardService;
+import himedia.myportal.service.impl.FileUploadServiceImpl;
 import himedia.myportal.vo.BoardVO;
+import himedia.myportal.vo.FileVO;
 import himedia.myportal.vo.UserVO;
 import jakarta.servlet.http.HttpSession;
 
@@ -19,11 +23,13 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class BoardController {
 	
-	private BoardService boardService;
+	private final BoardService boardService;
+	private final FileUploadServiceImpl fileUploadService;
 	
 	@Autowired
-	public BoardController(BoardService boardService) {
+	public BoardController(BoardService boardService, FileUploadServiceImpl fileUploadService) {
 		this.boardService = boardService;
+		this.fileUploadService = fileUploadService;
 	}
 	
 	
@@ -52,6 +58,9 @@ public class BoardController {
 		
 		boardService.increasementHitCount(no);
 		model.addAttribute("selectedBoard", boardService.getContent(no));
+		FileVO fileVO = boardService.getFileRelatedByBoard(no);
+		model.addAttribute("boardFile", fileVO);
+		
 		return "board/view";
 	}
 	
@@ -67,6 +76,7 @@ public class BoardController {
 	
 	@PostMapping("/write")
 	public String write(@ModelAttribute BoardVO boardVO, 
+			@RequestParam("file1") MultipartFile file1,
 			HttpSession session,
 			RedirectAttributes redirectAttributes) {
 		UserVO authUser = (UserVO)session.getAttribute("authUser");
@@ -78,6 +88,8 @@ public class BoardController {
 		boardVO.setUserNo(authUser.getNo().intValue());
 		
 		boardService.write(boardVO);
+		System.out.println("no: " + boardVO.getNo());
+		fileUploadService.uploadFile(file1, boardVO.getNo());
 		return "redirect:/board/list";
 	}
 	

@@ -18,13 +18,16 @@
 
     <div id="content">
       <div id="board" class="board-form">
-        <form method="post" action="">
+        <form method="post" action="" enctype="multipart/form-data">
           <table border="1" width="640" class="tbl-ex">
             <tr>
               <td colspan="2"><h3>게시판</h3></td>
             </tr>
             <tr>
               <th colspan="2">글쓰기</th>
+            </tr>
+            <tr>
+              <td colspan="2">첨부 파일 <input type="file" name="file1" /></td>
             </tr>
             <tr>
               <td>제목</td>
