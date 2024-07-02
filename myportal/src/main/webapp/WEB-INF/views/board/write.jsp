@@ -27,7 +27,7 @@
               <th colspan="2">글쓰기</th>
             </tr>
             <tr>
-              <td colspan="2">첨부 파일 <input type="file" name="file1" /></td>
+              <td colspan="2">첨부 파일 1 <input type="file" name="file1" />
             </tr>
             <tr>
               <td>제목</td>

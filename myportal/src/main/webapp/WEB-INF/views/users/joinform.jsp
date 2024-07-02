@@ -36,6 +36,7 @@ pageEncoding="UTF-8"%>
                </strong><br />
              </c:if>
           </spring:hasBindErrors>
+          <br />
           <label for="password">암호</label>
           <form:password path="password"/><br />
           <form:errors path="password" cssClass="error" /><br />
@@ -43,10 +44,11 @@ pageEncoding="UTF-8"%>
           <label for="email">이메일</label>
           <form:input path="email"/><br />
           <form:errors path="email" cssClass="error" />
-      
+          <br />
           <input type="button" id="check-email" data-target="<c:url value = '/users/checkEmail' />" value = "이메일 중복확인" />
           <input type="hidden" name="emailCheck" value="none" />
-          <br />
+          
+          <br /><br />
           <span>성별</span>
           <form:radiobutton path="gender" value="M" id="genderM" />
           <label for="genderM">남성</label>

@@ -59,7 +59,8 @@ public class BoardController {
 		boardService.increasementHitCount(no);
 		model.addAttribute("selectedBoard", boardService.getContent(no));
 		FileVO fileVO = boardService.getFileRelatedByBoard(no);
-		model.addAttribute("boardFile", fileVO);
+		if (fileVO != null)
+			model.addAttribute("boardFile", fileVO);
 		
 		return "board/view";
 	}
@@ -89,7 +90,8 @@ public class BoardController {
 		
 		boardService.write(boardVO);
 		System.out.println("no: " + boardVO.getNo());
-		fileUploadService.uploadFile(file1, boardVO.getNo());
+		if (!file1.isEmpty())
+			fileUploadService.uploadFile(file1, boardVO.getNo());
 		return "redirect:/board/list";
 	}
 	

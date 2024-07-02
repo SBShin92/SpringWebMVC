@@ -17,11 +17,12 @@
     
     
     <context:annotation-config />
-    <context:component-scan base-package="himedia.myportal.controller">
+    <context:component-scan base-package="himedia.myportal.controller, learnbyteaching.todos.controllers">
       <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
       <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
+    
     
     <!-- validator, conversionService, messageConverter를 자동으로 등록 -->
     <mvc:annotation-driven>
@@ -69,7 +70,7 @@
     
     <bean id="multipartResolver" 
         class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
-    <mvc:resources location="file:c:/uploaded-file/" mapping="/upload/**" />
+    <mvc:resources location="file:/home/ubuntu/myResources/" mapping="/upload/**" />
     
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
       <property name="basenames" value="messages/messages_ko" />

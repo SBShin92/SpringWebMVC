@@ -30,6 +30,7 @@
             <td>제목</td>
             <td>${ selectedBoard.title }</td>
           </tr>
+          <c:if test="${ not empty boardFile }">
           <tr>
             <td>첨부된 파일</td>
             <td>
@@ -38,6 +39,7 @@
               </div>
             </td>
           </tr>
+          </c:if>
           <tr>
             <td>내용</td>
             <td>

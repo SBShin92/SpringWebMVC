@@ -40,7 +40,6 @@ public class GuestbookController {
 		System.out.println("write result: " + success);
 		
 		return "redirect:/guestbook";
-		
 	}
 	
 	@GetMapping("/delete/{no}")

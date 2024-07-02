@@ -1,10 +1,16 @@
 package himedia.myportal.service.impl;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,8 +27,8 @@ public class FileUploadServiceImpl implements FileUploadService {
 	@Autowired
 	private BoardFilesBridgeDAO boardFilesBridgeDAO;
 	
-	private static String SAVE_PATH = "/home/ubuntu/myResources";
-	
+	@Value("${file.save.path}")
+	private String SAVE_PATH;
 	
 	public String uploadFile(MultipartFile multipartFile) {
 		String originalFileName = multipartFile.getOriginalFilename();
@@ -58,10 +64,22 @@ public class FileUploadServiceImpl implements FileUploadService {
 	
 	private void writeFile(MultipartFile multipartFile, String saveFileName) throws IOException {
 		byte[] fileData = multipartFile.getBytes();
-		FileOutputStream fos = new FileOutputStream(SAVE_PATH + "/" + saveFileName);
-		fos.write(fileData);
-		fos.flush();
-		fos.close();
+		Path filePath = Paths.get(SAVE_PATH + "/" + saveFileName);
+		Files.write(filePath, fileData);
+		
+		// This is a Unix, Linux or Mac system.
+		String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+            Set<PosixFilePermission> perms = new HashSet<>();
+            perms.add(PosixFilePermission.OWNER_READ);
+            perms.add(PosixFilePermission.OWNER_EXECUTE);
+            perms.add(PosixFilePermission.GROUP_READ);
+            perms.add(PosixFilePermission.GROUP_EXECUTE);
+            perms.add(PosixFilePermission.OTHERS_READ);
+            perms.add(PosixFilePermission.OTHERS_EXECUTE);
+            
+            Files.setPosixFilePermissions(filePath, perms);
+        } 
 	}
 	
 	private String getSaveFilename(String extName) {

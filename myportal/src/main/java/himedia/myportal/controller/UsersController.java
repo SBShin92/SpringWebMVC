@@ -36,8 +36,8 @@ public class UsersController {
 	}
 	
 	@GetMapping("/join")
-	public String join(Model model) {
-		model.addAttribute("userVO", new UserVO());
+	public String join(@ModelAttribute UserVO userVO) {
+		userVO.setGender("M");
         return "/users/joinform";
 	}
 	
