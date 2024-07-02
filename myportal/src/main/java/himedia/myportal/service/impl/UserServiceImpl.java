@@ -21,9 +21,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean signUp(UserVO vo) {
-		int insertedCount = 0;
-		insertedCount = userDAO.insert(vo);
-		return 1 == insertedCount;
+		return 1 == userDAO.insert(vo);
 	}
 
 	@Override

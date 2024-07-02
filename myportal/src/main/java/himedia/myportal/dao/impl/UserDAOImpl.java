@@ -27,6 +27,8 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			return sqlSession.insert("users.insert", vo);
 		} catch (Exception e) {
+			System.out.println("여기???");
+			e.printStackTrace();
 			throw new UserDAOException("Users INSERT Error: ", vo);
 		}
 	}

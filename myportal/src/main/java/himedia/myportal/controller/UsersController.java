@@ -1,10 +1,14 @@
 package himedia.myportal.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +22,7 @@ import himedia.myportal.service.UserService;
 import himedia.myportal.vo.UserVO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/users")
@@ -31,12 +36,23 @@ public class UsersController {
 	}
 	
 	@GetMapping("/join")
-	public String join() {
-		return "users/joinform";
+	public String join(Model model) {
+		model.addAttribute("userVO", new UserVO());
+        return "/users/joinform";
 	}
 	
 	@PostMapping("/join")
-	public String join(@ModelAttribute UserVO userVO, RedirectAttributes redirectAttributes) {
+	public String join(@ModelAttribute @Valid UserVO userVO,
+			BindingResult result,
+			RedirectAttributes redirectAttributes,
+			Model model) {
+		if (result.hasErrors()) {
+			List<ObjectError> lst = result.getAllErrors();
+			for(ObjectError node: lst)
+				System.out.println(node);
+			model.addAllAttributes(result.getModel());
+			return "users/joinform";
+		}
 		try {
 			if ("".equals(userVO.getName()) || "".equals(userVO.getEmail()))
 				throw new UserDAOException();

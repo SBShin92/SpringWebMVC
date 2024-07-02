@@ -2,6 +2,8 @@
 pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,23 +23,45 @@ pageEncoding="UTF-8"%>
         <c:if test="${ not empty requestScope.errorMsg }">
           <p style="color:red; font-weight:bold;">${ requestScope.errorMsg }</p>
         </c:if>
-        <form method="POST" action="<c:url value='/users/join' />">
-          <label for="name">이름</label> <input type="text" name="name" /><br />
+        <form:form modelAttribute="userVO" method="POST" action="${pageContext.request.contextPath}/users/join">
+          <label for="name">이름</label>
+          <form:input path="name"/><br />
+          
+          <spring:hasBindErrors name="userVO">
+             <c:if test="${errors.hasFieldErrors('name') }">
+               <strong>
+                <spring:message
+                  code="${errors.getFieldError( 'name' ).codes[0] }" 
+                  text="${errors.getFieldError( 'name' ).defaultMessage }" />
+               </strong><br />
+             </c:if>
+          </spring:hasBindErrors>
           <label for="password">암호</label>
-          <input type="password" name="password" /><br />
+          <form:password path="password"/><br />
+          <form:errors path="password" cssClass="error" /><br />
+          
           <label for="email">이메일</label>
-          <input type="text" name="email" />
+          <form:input path="email"/><br />
+          <form:errors path="email" cssClass="error" />
+      
           <input type="button" id="check-email" data-target="<c:url value = '/users/checkEmail' />" value = "이메일 중복확인" />
           <input type="hidden" name="emailCheck" value="none" />
           <br />
-          <label for="gender">성별</label>
-          <input type="radio" name="gender" value="M" checked />남성
-          <input type="radio" name="gender" value="F" />여성
+          <span>성별</span>
+          <form:radiobutton path="gender" value="M" id="genderM" />
+          <label for="genderM">남성</label>
+          
+          <form:radiobutton path="gender" value="F" id="genderF" />
+          <label for="genderF">여성</label><br/>
+          <form:errors path="gender" cssClass="error" />
+          
+          
+          <br/>
           <label for="agree">약관동의</label>
           <input type="checkbox" name="agree" id="agree" value="none" />
           
           <input type="submit" value="Sign up" />
-        </form>
+        </form:form>
       </div>
       <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
     </div>

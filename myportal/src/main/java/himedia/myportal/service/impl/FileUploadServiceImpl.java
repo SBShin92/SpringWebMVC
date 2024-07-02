@@ -21,7 +21,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 	@Autowired
 	private BoardFilesBridgeDAO boardFilesBridgeDAO;
 	
-	private static String SAVE_PATH = "C:/uploaded-file";
+	private static String SAVE_PATH = "/home/ubuntu/myResources";
 	
 	
 	public String uploadFile(MultipartFile multipartFile) {
