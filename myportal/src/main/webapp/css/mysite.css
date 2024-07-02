@@ -25,6 +25,10 @@ ul, ol {
 
 #content {
   float: right;
+  
+  height: 80vh;
+  overflow: auto;
+   
   width: 580px;
   background-color: #fff;
 }
