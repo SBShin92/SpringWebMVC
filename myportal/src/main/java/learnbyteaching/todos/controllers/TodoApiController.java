@@ -23,7 +23,7 @@ import learnbyteaching.todos.repositories.vo.TodoItem;
 
 @RequestMapping("/api/todos")
 @RestController
-@CrossOrigin(origins = "http://localhost", 
+@CrossOrigin(origins = "*", 
 	methods= {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE},
 	allowedHeaders= {"Content-Type", "Authorization"})
 public class TodoApiController {
